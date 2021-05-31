@@ -1,0 +1,518 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.5">
+    
+    
+      
+        <title>Integrasi Numerik - KN (Komputasi Numerik)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.bde7dde4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4cae4f">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="green" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#integrasi-numerik" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="KN (Komputasi Numerik)" class="md-header__button md-logo" aria-label="KN (Komputasi Numerik)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            KN (Komputasi Numerik)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Integrasi Numerik
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="KN (Komputasi Numerik)" class="md-nav__button md-logo" aria-label="KN (Komputasi Numerik)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    KN (Komputasi Numerik)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Integrasi Numerik
+      </a>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="integrasi-numerik">Integrasi Numerik</h1>
+<p>Inegrasi numerik merupakan hal penting dalam penyelesaian masalah sains dan Teknik. Hal itu penting karena manakala terjadi pendekatan analisis yang mengalami kebuntuan.</p>
+<h1 id="metode-klasik">Metode Klasik</h1>
+<p>Dalam penerapan metode klasik terdapat beberapa metode</p>
+<ul>
+<li>Metode Trapezium</li>
+<li>Metode Titik Tengah</li>
+<li>Metode Simpson 1/3</li>
+</ul>
+<h1 id="metode-trapezium">Metode Trapezium</h1>
+<p>Metode ini merupakan metode integrasi numerik yang didasarkan pada jumlah segmen-segmen berbentuk trapezium. Metode ini termasuk juga dalam Newton Cotes orde pertama, pada metode ini grafik fungsi $$y=f\left( x\right)$$ didekati dengan garis lurus yang menghubungkan titik (a, f(a)) dan (b, f(b)). Dengan demikian luas daerah yang dihasilkan akan dibatasi oleh kurva $$y=f\left( x\right)$$. pada garis x = a dan garis x = b dihampiri oleh trapezium yang dibatasi oleh garis lurus menghubungkan titik $$\left( a,f\left( a\right) \right)$$ dan \left( b,f\left( b\right) \right), dimana garis x = a dan garis x = b dan sumbu -x. </p>
+<p>Maka diperoleh </p>
+<ul>
+<li>
+<p>[ ] Rumus Trazpezium segmen tunggal
+  $$
+  \int ^{b}_{a}f\left( x\right) dx\approx \left( b-a\right) \dfrac{f\left( a\right) +f\left( b\right) }{2}
+  $$</p>
+</li>
+<li>
+<p>[ ] Rumus Trapezium segemn ganda
+  $$
+  \int ^{b}<em>{a}f\left( x\right) dx\approx \dfrac{h}{2}\left( f\left( x</em>{0}\right) +f\left( x_{n}\right) +2\Sigma <em>{i=1}^{n-1}f\left( x</em>{i}\right) \right)
+  $$</p>
+</li>
+</ul>
+<p>Program komputer untuk metode trapezium menggunakan bahasa Python</p>
+<p>Pada contoh 
+$$
+\int ^{10}_{1}x^{2}\exp \left( -1\right) dx =1.833858414426188
+$$
+Import modul python</p>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+</code></pre>
+<p>Perhitungan Metode</p>
+<pre><code class="language-python">def func(x):
+    return (x**2)*np.exp(-x)
+
+a = 1.0
+b = 10.0
+N = 10
+
+dx = (b-a)/(N-1)
+x = np.linspace(a,b,N)
+
+sum = 0.0
+for i in range (1, N-1):
+    sum += func(x[i])
+
+hasil = 0.5*dx*(func(x[0])+2.0*sum+func(x[-1]))
+
+print(hasil)
+</code></pre>
+<p>Hasil Perhitungan</p>
+<pre><code>1.8025164595168974
+</code></pre>
+<p>Menampilan Grafik </p>
+<pre><code class="language-python">nd = 1000
+xp = np.linspace(a,b,nd)
+
+plt.plot(xp, func(xp))
+
+for i in range(N):
+    plt.bar(x[i], func(x[i]), 
+            align='edge', 
+            width=0.00000001,
+           edgecolor='red')
+
+plt.fill_between(x, func(x),
+                color='gray')
+
+plt.show()
+</code></pre>
+<p><img alt="" src="E:\KULIAH\semester 6\Komputasi Numerik\UAS\KN-Project\docs_sample\KN_05_Integrasi_Numerik\trapezium.png" /></p>
+<h1 id="metode-titik-tengah">Metode Titik Tengah</h1>
+<p>Pada aturan titik tengah dapat diperoleh dengan cara yang sama seperti pada aturan trapezium. Dengan menevaluasi fungsi f(x) pada titik tengah setiap interval, maka kesalahanya akan lebih kecil dari pada menggunakan aturan trapezium. Pada gambar dibawah ini akan memberikan tafsiran bagaimana pendekatan metode ini.</p>
+<p>Kita dapat mereduksi kelahan dengan membagi unteval X0 hingga X1 menjadi n segmen yang lebih kecil. Dimana aturan titik tengah banyak segmen ini selanjutnya dapat dinyatakan menjadi.</p>
+<p>$$
+\int ^{x_{0}+Nh}<em>{x}f\left( x\right) dx\approx h\sum ^{N-1}</em>{n=0}f\left( x_{0}+\left( n+\dfrac{1}{2}\right) h\right)
+$$</p>
+<p>Program komputer untuk metode trapezium menggunakan bahasa Python</p>
+<p>Pada contoh 
+$$
+\int ^{10}_{1}x^{2}\exp \left( -1\right) dx =1.833858414426188
+$$
+Import modul python</p>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+</code></pre>
+<p>Perhitungan Metode</p>
+<pre><code class="language-python">def func(x):
+    return (x**2)*np.exp(-x)
+
+a = 1.0
+b = 10.0
+N = 10
+h = (b-a)/N
+x = np.linspace(a,b,N)
+
+sum = 0.0
+for i in range (1, N-1):
+    sum += func(x[i])
+
+hasil = h*sum
+
+print(hasil)
+</code></pre>
+<p>Hasil Perhitungan</p>
+<pre><code>1.4546760681987467
+</code></pre>
+<p>Menampilkan Grafik</p>
+<pre><code class="language-python">nd = 1000
+xp = np.linspace(a,b,nd)
+
+plt.plot(xp, func(xp))
+
+for i in range(N):
+    plt.bar(x[i], func(x[i]), 
+            align='edge', 
+            width=0.00000001,
+           edgecolor='red')
+
+plt.fill_between(x, func(x),
+                color='gray')
+
+plt.show()
+</code></pre>
+<p><img alt="" src="E:\KULIAH\semester 6\Komputasi Numerik\UAS\KN-Project\docs_sample\KN_05_Integrasi_Numerik\trapezium.png" /></p>
+<h1 id="metode-simpson-13">Metode Simpson 1/3</h1>
+<p>Metode ini adalah metode alternatif dengan pendekatan integral disamping dua metode sebelumnya yaitu trapesiun dan titik tengah. Penggunaan metode ini diharapkan dapat diperoleh ketelitian yang lebih tinggi dari metode sebelunya meskipun lebar dari segmen <em>h</em> pada inegrasi diambil cukup lebar. </p>
+<p>Secara umum aturan Simpson 1/3 dapat dituliskan sebagai berikut
+$$
+\int ^{b}<em>{a}f\left( x\right) d\approx \dfrac{h}{3}\left[ f\left( a\right) +4\sum ^{N/2-1}</em>{i=0}f\left( X_{2t+1}\right) \sum ^{N//2-1}<em>{t=genap}f\left( x</em>{2t}\right) +f\left( b\right) \right]
+$$</p>
+<p>Algoritma Program pada Metode Simpson 1/3</p>
+<ul>
+<li>
+<p>Definisi fungsi yang akan diinegrasikan</p>
+</li>
+<li>
+<p>Menentukan batas bawah <em>b</em> dan batas atas <em>a</em> integrasi</p>
+</li>
+<li>
+<p>Tentukan jumlah segmen <em>N</em></p>
+</li>
+<li>
+<p>Hitung lebar segmen  $$h=\dfrac{b-a}{N}$$</p>
+</li>
+<li>
+<p>Inisialisai jumlah $$sum = f\left( a\right) + f\left( b\right)$$</p>
+</li>
+<li>
+<p>Inisialisasi factor bobot $$fak = 4$$</p>
+</li>
+<li>
+<p>Hitung jumlah dari <em>I</em> = 1 hingga <em>I</em> = <em>N</em> – 1</p>
+</li>
+<li>
+<p>Tentukan node tiap-tiap $$xi = a + ih$$</p>
+</li>
+<li>
+<p>Brikan syarat (<em>fak</em> = 4), maka <em>fak</em> = 2</p>
+</li>
+<li>
+<p>Hitung nilai $$sum = sum +fak *f(x)$$</p>
+</li>
+<li>
+<p>Hitung hasil akhir penjumlahan </p>
+</li>
+</ul>
+<p>$$hasil=\dfrac{h}{3}\ast sum$$</p>
+<p>Program komputer untuk metode trapezium menggunakan bahasa Python</p>
+<p>Pada contoh 
+$$
+\int ^{10}_{1}x^{2}\exp \left( -1\right) dx =1.833858414426188
+$$
+Import modul python</p>
+<pre><code class="language-python">import numpy as np
+</code></pre>
+<p>Perhitungan Metode</p>
+<pre><code class="language-python">def func(x):
+    return (x**2)*np.exp(-x)
+
+a = 1.0
+b = 10.0
+N = 10
+h = (b-a)/N
+x = np.linspace(a,b,N+1)
+
+sum_genap = 0.0
+sum_ganjil = 0.0
+for i in range(1, N):
+    if np.mod(i,2) == 0:
+        sum_genap = sum_genap + 2*func(x[i])
+    else:
+        sum_ganjil = sum_ganjil + 4*func(x[i])
+
+hasil = (h/3)*(func(a)+sum_ganjil+sum_genap+func(b))
+
+print(hasil)
+</code></pre>
+<p>Hasil Perhitungan</p>
+<pre><code>1.834044489480491
+</code></pre>
+<h1 id="daftar-pustaka">Daftar Pustaka</h1>
+<ul>
+<li>
+<p>Supardi, M.Si. BAB III Inegrasi Numerik.</p>
+</li>
+<li>
+<p>Nining Herfina, Amrullah, Junaidi. Efektifitas Metode Trapesium dan Simpson</p>
+</li>
+</ul>
+<p>dalam Penentuan Luas Menggunakan Pemrograman Pascal. 1 Juni 2019.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href=".." class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Home
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.d351de03.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a1609d9a.min.js"></script>
+      
+        <script src="../mathjax-config.js"></script>
+      
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+    
+  </body>
+</html>
